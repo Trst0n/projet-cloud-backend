@@ -3,10 +3,10 @@ name: Build and Deploy to Azure
 on:
   push:
     branches:
-      - master  # Déclenche le workflow sur un push sur la branche principale
+      - main  # Déclenche le workflow sur un push sur la branche principale
   pull_request:
     branches:
-      - master  # Déclenche aussi sur une PR vers la branche principale
+      - main  # Déclenche aussi sur une PR vers la branche principale
 
 jobs:
   build-and-deploy:
@@ -28,7 +28,6 @@ jobs:
           registry_username: ${{ secrets.REGISTRY_USERNAME }}
           registry_password: ${{ secrets.REGISTRY_PASSWORD }}
         run: |
-          az login
           terraform init
           terraform apply
         
