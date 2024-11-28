@@ -1,6 +1,6 @@
 provider "azurerm" {
   features {}
-  subscription_id = "581196dc-2cdf-42b4-81c7-4dae758431a0"
+  subscription_id = "2e440b03-68c2-42d1-bb9b-0128d9d07f1e"
   resource_provider_registrations = "none"
 }
 
@@ -24,12 +24,11 @@ resource "azurerm_linux_web_app" "back" {
   service_plan_id     = azurerm_service_plan.back.id
 
   site_config {
-    linux_fx_version = "DOCKER|projetcloud.azurecr.io/myapp:latest"  # Remplacez par le nom exact de votre image dans l'ACR
-  }
-
-  app_settings = {
-    "DOCKER_REGISTRY_SERVER_URL" = "https://projetcloud.azurecr.io"  # URL de votre ACR
-    "DOCKER_REGISTRY_SERVER_USERNAME" =  "projetCloud" # Remplacez par votre identifiant ACR
-    "DOCKER_REGISTRY_SERVER_PASSWORD" = "qj5K3ZyddS/gRQXGe2s9AcTmPQ29IOogdleE21Jr5S+ACRAx3+Ci"  # Remplacez par votre mot de passe ACR
+   application_stack {
+      docker_image_name   = "projetCloud.azurecr.io/myapp:latest"
+      docker_registry_url = "https://projetCloud.azurecr.io"
+      docker_registry_username = "projetCloud"
+      docker_registry_password = "qj5K3ZyddS/gRQXGe2s9AcTmPQ29IOogdleE21Jr5S+ACRAx3+Ci"
+    }
   }
 }
