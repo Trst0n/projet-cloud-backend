@@ -6,7 +6,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "back" {
   name     = "projet-cloud"
-  location = "Europe West"
+  location = "West Europe"
 }
 
 resource "azurerm_service_plan" "back" {
