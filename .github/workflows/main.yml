@@ -35,7 +35,6 @@ jobs:
       - name: Log in to Azure CLI
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}       # (Optional if using Azure CLI)
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}       # (Optional if using Azure CLI)
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}  # Your Azure subscription ID
 
@@ -45,7 +44,7 @@ jobs:
 
       # Step 6: Apply Terraform configuration to deploy the app
       - name: Apply Terraform Configuration
-        run: terraform apply -auto-approve
+        run: terraform apply
         env:
           ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
           ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
